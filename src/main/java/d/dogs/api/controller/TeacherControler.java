@@ -1,21 +1,20 @@
 package d.dogs.api.controller;
 
 
-import d.dogs.api.models.TeacherModel;
-import d.dogs.api.repository.Repository;
-import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController
 public class TeacherControler {
 
-    @Autowired
+    /*@Autowired
     private Repository repository;
 
+    public TeacherControler(Repository repository) {
+        this.repository = repository;
+    }
+
+    @Bean
     @GetMapping()
     public String index(){
         return "CONNECTED";
@@ -48,6 +47,6 @@ public class TeacherControler {
         TeacherModel teacher = repository.findById(id).get();
         repository.delete(teacher);
         return "DELETED SUCCESFULY";
-    }
+    }*/
 
 }

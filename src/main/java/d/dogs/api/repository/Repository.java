@@ -1,7 +1,7 @@
 package d.dogs.api.repository;
 
-import d.dogs.api.models.TeacherModel;
+import d.dogs.api.entity.TeacherEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Repository extends JpaRepository<TeacherModel, Integer> {
+public interface Repository extends JpaRepository<TeacherEntity, Integer> {
 }

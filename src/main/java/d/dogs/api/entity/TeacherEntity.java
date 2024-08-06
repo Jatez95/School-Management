@@ -1,27 +1,52 @@
-package d.dogs.api.models;
+package d.dogs.api.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
-public class TeacherModel{
+@Table(name = "teacher")
+public class TeacherEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(name = "first_name")
     private String first_name;
+
     @Column(name = "first_surname")
     private String first_surname;
+
     @Column(name = "second_surname")
     private String second_surname;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "years_experience")
     private Integer years_experience;
+
+    @ManyToMany
+    @JoinTable(
+            name = "subject_class_teacher",
+            joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = {
+                    @JoinColumn(name = "class_id"),
+                    @JoinColumn(name = "subject_id")
+            }
+    )
+    private Set<ClassEntity> classes;
+
+    @ManyToMany
+    @JoinTable(
+            name = "subject_class_teacher",
+            joinColumns = @JoinColumn(name = "teacher_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id")
+    )
+    private Set<SubjectEntity> subjects;
 
     public Integer getId() {
         return id;
