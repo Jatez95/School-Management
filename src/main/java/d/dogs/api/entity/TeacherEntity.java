@@ -5,8 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Set;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Entity
 @Table(name = "teacher")
 public class TeacherEntity {
@@ -47,6 +46,20 @@ public class TeacherEntity {
             inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
     private Set<SubjectEntity> subjects;
+
+    public TeacherEntity(Integer id, String first_name, String first_surname, String second_surname, String email, Integer years_experience, Set<ClassEntity> classes, Set<SubjectEntity> subjects) {
+        this.id = id;
+        this.first_name = first_name;
+        this.first_surname = first_surname;
+        this.second_surname = second_surname;
+        this.email = email;
+        this.years_experience = years_experience;
+        this.classes = classes;
+        this.subjects = subjects;
+    }
+
+    public TeacherEntity() {
+    }
 
     public Integer getId() {
         return id;
@@ -95,4 +108,36 @@ public class TeacherEntity {
     public void setYears_experience(Integer years_experience) {
         this.years_experience = years_experience;
     }
+
+    public Set<ClassEntity> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Set<ClassEntity> classes) {
+        this.classes = classes;
+    }
+
+    public Set<SubjectEntity> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(Set<SubjectEntity> subjects) {
+        this.subjects = subjects;
+    }
+
+    @Override
+    public String toString() {
+        return "TeacherEntity{" +
+                "id=" + id +
+                ", first_name='" + first_name + '\'' +
+                ", first_surname='" + first_surname + '\'' +
+                ", second_surname='" + second_surname + '\'' +
+                ", email='" + email + '\'' +
+                ", years_experience=" + years_experience +
+                ", classes=" + classes +
+                ", subjects=" + subjects +
+                '}';
+    }
+
+
 }
